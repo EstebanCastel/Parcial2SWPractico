@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <h2>Lista de Conferencias</h2>
+  <div class="row">
+    <div class="col-md-8">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Fecha de Inicio</th>
+            <th>Fecha de Fin</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let conferencia of conferencias">
+            <td>{{ conferencia.id }}</td>
+            <td><a href="#" (click)="onSelected(conferencia.id); $event.preventDefault()">{{ conferencia.name }}</a></td>
+            <td>{{ conferencia.starts }}</td>
+            <td>{{ conferencia.ends }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        Upcoming conferences: {{ conferenciasFuturas }}
+      </div>  
+    </div>
+    <div class="col-md-4">
+      <app-conferencia-detalle *ngIf="selectedConferenciaId" [conferenciaId]="selectedConferenciaId"></app-conferencia-detalle>
+    </div>
+  </div>
+</div>
